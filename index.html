@@ -10,17 +10,11 @@
 
 <body>
     <script type="text/javascript" src="js/puzzle.js"></script>
+    <script type="text/javascript" src="js/wisdomwords.js"></script>
     <script type="text/javascript">
 wwp.init("div#wrapper");
-wwp.play({
-    "sentence": "存在即合理",
-    "grouping": [ 2, 1, 2 ],
-    "knowledge": {
-        "author": "尼采",
-        "reference": "?",
-        "description": ["?","?"]
-    }
-});
+wwdb = wwdb.sort(()=>Math.random()-0.5);
+wwp.play(wwdb[0]);
     </script>
 </body>
 

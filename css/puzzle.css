@@ -1,8 +1,9 @@
 :root
 {
     --size: 128px;
-    --border: 8px;
-    --word: calc(var(--size) - var(--border)*2)
+    --gap: 4px;
+    --border: calc(var(--gap) * 2);
+    --word: calc(var(--size) - var(--border)*2);
 }
 
 #wrapper
@@ -14,7 +15,20 @@
 .puzzle
 {
     display: flex;
+    flex-direction: column;
     width: fit-content;
+}
+
+.puzzle .row
+{
+    display: flex;
+    flex-direction: row;
+    margin: 0px auto;
+    width: fit-content;
+}
+.puzzle .row ~ .row
+{
+    margin-top: var(--border);
 }
 
 .group
@@ -25,7 +39,7 @@
     margin: 0px var(--border);
     outline: 0px;
     border: 0px;
-    padding: var(--border);
+    padding: 0px;
 }
 
 .space
@@ -33,7 +47,7 @@
     position: relative;
     box-sizing: border-box;
     display: inline-block;
-    margin: var(--border);
+    margin: var(--gap);
     outline: 0px;
     border: var(--border) dotted lightgray;
     border-radius: calc(var(--border) * 2);
@@ -47,13 +61,14 @@
     text-align: center;
     vertical-align: middle;
 }
+.group:hover > .space,
 .space:hover
 {
     border-color: gray;
 }
 .space[wwp-answer]
 {
-    border-color: transparent;
+    border-color: transparent !important;
     color: black;
 }
 .wrong .space
