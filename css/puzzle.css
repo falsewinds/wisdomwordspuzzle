@@ -1,0 +1,95 @@
+:root
+{
+    --size: 128px;
+    --border: 8px;
+    --word: calc(var(--size) - var(--border)*2)
+}
+
+#wrapper
+{
+    position: fixed;
+    inset: 20px;
+}
+
+.puzzle
+{
+    display: flex;
+    width: fit-content;
+}
+
+.group
+{
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    margin: 0px var(--border);
+    outline: 0px;
+    border: 0px;
+    padding: var(--border);
+}
+
+.space
+{
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: var(--border);
+    outline: 0px;
+    border: var(--border) dotted lightgray;
+    border-radius: calc(var(--border) * 2);
+    padding: 0px;
+    width: var(--size);
+    height: var(--size);
+    font-family: "微軟正黑體", "Ubuntu";
+    font-size: var(--word);
+    line-height: var(--word);
+    /*color: transparent;*/
+    text-align: center;
+    vertical-align: middle;
+}
+.space:hover
+{
+    border-color: gray;
+}
+.space[wwp-answer]
+{
+    border-color: transparent;
+    color: black;
+}
+.wrong .space
+{
+    border-color: red !important;
+}
+.correct .space
+{
+    border-color: lime !important;
+}
+
+.word
+{
+    position: absolute;
+    box-sizing: border-box;
+    display: block;
+    margin: 8px;
+    outline: 0px;
+    border: 0px;
+    padding: 0px;
+    width: var(--size);
+    height: var(--size);
+    font-family: "微軟正黑體", "Ubuntu";
+    font-size: var(--size);
+    line-height: var(--size);
+    color: black;
+    text-align: center;
+    cursor: move;
+    user-select: none;
+}
+.word.untouchable
+{
+    pointer-events: none;
+    color: rgba(0,0,0,0.5);
+}
+.word.invisible:not(.untouchable)
+{
+    color: transparent;
+}
